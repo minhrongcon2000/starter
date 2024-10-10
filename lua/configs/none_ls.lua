@@ -1,15 +1,32 @@
+local augroup = vim.api.nvim_create_augroup("LspFormatting", {});
 local null_ls = require "null-ls"
 
 local opts = {
   sources = {
     null_ls.builtins.formatting.black,
-    null_ls.builtins.diagnotics.mypy.with {
-      extra_args = function()
-        local virtual = vim.fn.getcwd() .. "/.venv"
-        return { "--python-executable", virtual .. "/bin/python3" }
-      end,
-    },
+    null_ls.builtins.formatting.isort,
+    null_ls.builtins.diagnostics.mypy,
+    -- null_ls.builtins.formatting.terraform_fmt,
+    -- null_ls.builtins.diagnostics.terraform_validate,
+    -- null_ls.builtins.formatting.gofumt,
+    -- null_ls.builtins.formatting.goimports_reviser,
+    -- null_ls.builtins.formatting.golines,
   },
+  on_attach = function(client, bufnr)
+    if client.supports_method("textDocument/formatting") then
+      vim.api.nvim_clear_autocmds({
+        group = augroup,
+        buffer = bufnr,
+      })
+      vim.api.nvim_create_autocmd("BufWritePre", {
+        group = augroup,
+        buffer = bufnr,
+        callback = function()
+          vim.lsp.buf.format({ bufnr = bufnr })
+        end,
+      })
+    end
+  end
 }
 
 return opts

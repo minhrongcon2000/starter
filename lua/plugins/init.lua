@@ -8,14 +8,18 @@ return {
   },
 
   {
-    "simrat39/rust-tools.nvim",
-    ft = "rust",
-    opts = function()
-      return require "configs.rust-tools"
-    end,
-    config = function(_, opts)
-      require("rust-tools").setup(opts)
-    end,
+    "mrcjkb/rustaceanvim",
+    version = '^5',
+    lazy = false,
+    server = {
+      settings = {
+        ["rust-analyzer"] = {
+          cargo = {
+            allFeatures = true,
+          },
+        },
+      },
+    },
   },
 
   -- These are some examples, uncomment them if you want to see them work!
@@ -25,6 +29,11 @@ return {
       require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end,
+    opts = {
+      servers = {
+        terraformls = {},
+      },
+    }
   },
   {
     "williamboman/mason.nvim",
@@ -40,6 +49,9 @@ return {
         "black",
         "mypy",
         "rust-analyzer",
+        "tflint",
+        "gopls",
+        "isort",
       },
     },
   },
@@ -52,6 +64,7 @@ return {
     opts = function()
       return require "configs.none_ls"
     end,
+    lazy = false,
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -65,25 +78,10 @@ return {
         "java",
         "python",
         "rust",
+        "terraform",
+        "hcl"
       },
     },
-  },
-  {
-    "christoomey/vim-tmux-navigator",
-    cmd = {
-      "TmuxNavigateLeft",
-      "TmuxNavigateDown",
-      "TmuxNavigateUp",
-      "TmuxNavigateRight",
-      "TmuxNavigatePrevious",
-    },
-    keys = {
-      { "<c-s-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-s-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-s-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-s-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
-    },
-    lazy = false,
   },
   {
     "rust-lang/rust.vim",
@@ -102,23 +100,7 @@ return {
     end,
   },
   {
-    "kdheepak/lazygit.nvim",
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-    -- optional for floating window border decoration
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    -- setting the keybinding for LazyGit with 'keys' is recommended in
-    -- order to load the plugin when the command is run for the first time
-    keys = {
-      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-    },
+    "mfussenegger/nvim-dap",
   },
   -- {
   --   "hrsh7th/nvim-cmp",
