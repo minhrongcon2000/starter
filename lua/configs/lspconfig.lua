@@ -33,13 +33,13 @@ lspconfig.pyright.setup {
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
   filetypes = { "python" },
-  -- settings = {
-  --   python = {
-  --     analysis = {
-  --       autoImportCompletions = true,
-  --     },
-  --   },
-  -- },
+  settings = {
+    python = {
+      analysis = {
+        autoImportCompletions = true,
+      },
+    },
+  },
 }
 
 -- lspconfig.rust_analyzer.setup {
