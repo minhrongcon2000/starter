@@ -9,7 +9,7 @@ return {
 
   {
     "mrcjkb/rustaceanvim",
-    version = '^5',
+    version = "^5",
     lazy = false,
     server = {
       settings = {
@@ -42,11 +42,9 @@ return {
         "jdtls",
         "pyright",
         "black",
-        "mypy",
-        "rust-analyzer",
-        "tflint",
-        "gopls",
         "isort",
+        "rust-analyzer",
+        "gopls",
         "gofumpt",
         "golines",
         "goimports-reviser",
@@ -67,7 +65,7 @@ return {
     end,
     lazy = false,
     dependencies = {
-     "nvimtools/none-ls-extras.nvim",
+      "nvimtools/none-ls-extras.nvim",
     },
   },
   {
