@@ -1,25 +1,7 @@
 -- EXAMPLE
 local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
-local servers = { "html", "cssls" }
 local nvlsp = require "nvchad.configs.lspconfig"
-
--- lsps with default config
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
-    on_attach = nvlsp.on_attach,
-    on_init = nvlsp.on_init,
-    capabilities = nvlsp.capabilities,
-  }
-end
-
--- configuring single server, example: typescript
--- lspconfig.tsserver.setup {
---   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
---   capabilities = nvlsp.capabilities,
--- }
--- typescript
 
 lspconfig.jdtls.setup {
   on_attach = nvlsp.on_attach,
@@ -42,6 +24,20 @@ lspconfig.pyright.setup {
   },
 }
 
+lspconfig.lua_ls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  filetypes = { "lua" },
+  settings = {
+    Lua = {
+      diagnostics = {
+        globals = { 'vim' }
+      }
+    }
+  }
+}
+
 -- lspconfig.rust_analyzer.setup {
 --   on_attach = on_attach,
 --   on_init = on_init,
@@ -60,6 +56,7 @@ lspconfig.pyright.setup {
 lspconfig.gopls.setup {
   on_attach = nvlsp.on_attach,
   on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
   rootdir = util.root_pattern("go.work", "go.mod", ".git"),
@@ -73,3 +70,43 @@ lspconfig.gopls.setup {
     }
   }
 }
+
+lspconfig.helm_ls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+  valuesFiles = {
+    mainValuesFile = "values.yaml",
+    lintOverlayValuesFile = "values.lint.yaml",
+    additionalValuesFilesGlobPattern = "values*.yaml"
+  },
+  filetypes = {'helm'},
+  -- yamlls = {
+  --   enabled = true,
+  --   enabledForFilesGlob = "*.{yaml,yml}",
+  --   diagnosticsLimit = 50,
+  --   showDiagnosticsDirectly = false,
+  --   path = "yaml-language-server",
+  --   config = {
+  --     schemas = {
+  --       kubernetes = "templates/**",
+  --     },
+  --     completion = true,
+  --     hover = true,
+  --     -- any other config from https://github.com/redhat-developer/yaml-language-server#language-server-settings
+  --   }
+  -- }
+}
+
+lspconfig.ts_ls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+}
+
+-- lspconfig.yamlls.setup {
+--   on_attach = nvlsp.on_attach,
+--   on_init = nvlsp.on_init,
+--   capabilities = nvlsp.capabilities,
+--   cmd = { 'yaml-language-server', '--stdio' },
+-- }

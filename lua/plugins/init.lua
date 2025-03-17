@@ -29,11 +29,6 @@ return {
       require("nvchad.configs.lspconfig").defaults()
       require "configs.lspconfig"
     end,
-    opts = {
-      servers = {
-        terraformls = {},
-      },
-    }
   },
   {
     "williamboman/mason.nvim",
@@ -52,6 +47,12 @@ return {
         "tflint",
         "gopls",
         "isort",
+        "gofumpt",
+        "golines",
+        "goimports-reviser",
+        "helm-ls",
+        "typescript-language-server",
+        "ruff",
       },
     },
   },
@@ -65,6 +66,9 @@ return {
       return require "configs.none_ls"
     end,
     lazy = false,
+    dependencies = {
+     "nvimtools/none-ls-extras.nvim",
+    },
   },
   {
     "nvim-treesitter/nvim-treesitter",
@@ -79,7 +83,11 @@ return {
         "python",
         "rust",
         "terraform",
-        "hcl"
+        "hcl",
+        "helm",
+        "go",
+        "yaml",
+        "dockerfile",
       },
     },
   },
@@ -102,6 +110,7 @@ return {
   {
     "mfussenegger/nvim-dap",
   },
+  { "towolf/vim-helm", ft = "helm" },
   -- {
   --   "hrsh7th/nvim-cmp",
   --   opts = function()
