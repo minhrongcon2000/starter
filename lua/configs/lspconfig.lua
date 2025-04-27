@@ -19,6 +19,7 @@ lspconfig.pyright.setup {
     python = {
       analysis = {
         autoImportCompletions = true,
+        disableOrganizeImports = true,
       },
     },
   },
@@ -32,10 +33,10 @@ lspconfig.lua_ls.setup {
   settings = {
     Lua = {
       diagnostics = {
-        globals = { 'vim' }
-      }
-    }
-  }
+        globals = { "vim" },
+      },
+    },
+  },
 }
 
 -- lspconfig.rust_analyzer.setup {
@@ -66,9 +67,9 @@ lspconfig.gopls.setup {
       usePlaceholders = true,
       analyses = {
         unusedparams = true,
-      }
-    }
-  }
+      },
+    },
+  },
 }
 
 lspconfig.helm_ls.setup {
@@ -78,9 +79,9 @@ lspconfig.helm_ls.setup {
   valuesFiles = {
     mainValuesFile = "values.yaml",
     lintOverlayValuesFile = "values.lint.yaml",
-    additionalValuesFilesGlobPattern = "values*.yaml"
+    additionalValuesFilesGlobPattern = "values*.yaml",
   },
-  filetypes = {'helm'},
+  filetypes = { "helm" },
   -- yamlls = {
   --   enabled = true,
   --   enabledForFilesGlob = "*.{yaml,yml}",
