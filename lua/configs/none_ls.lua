@@ -3,8 +3,8 @@ local null_ls = require "null-ls"
 
 local opts = {
   sources = {
-    null_ls.builtins.formatting.black,
-    null_ls.builtins.formatting.isort,
+    -- null_ls.builtins.formatting.black,
+    -- null_ls.builtins.formatting.isort,
     -- null_ls.builtins.diagnostics.mypy,
     -- null_ls.builtins.formatting.terraform_fmt,
     -- null_ls.builtins.diagnostics.terraform_validate,
@@ -12,7 +12,7 @@ local opts = {
     null_ls.builtins.formatting.goimports_reviser,
     null_ls.builtins.formatting.golines,
     null_ls.builtins.formatting.stylua,
-    require "none-ls.diagnostics.ruff",
+    require "none-ls.formatting.ruff",
   },
   on_attach = function(client, bufnr)
     if client.supports_method "textDocument/formatting" then
