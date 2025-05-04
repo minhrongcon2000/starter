@@ -13,6 +13,7 @@ local opts = {
     null_ls.builtins.formatting.golines,
     null_ls.builtins.formatting.stylua,
     require "none-ls.formatting.ruff",
+    require "none-ls.formatting.ruff_format",
   },
   on_attach = function(client, bufnr)
     if client.supports_method "textDocument/formatting" then
