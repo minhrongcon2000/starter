@@ -19,7 +19,7 @@ lspconfig.pyright.setup {
     python = {
       analysis = {
         autoImportCompletions = true,
-        disableOrganizeImports = true,
+        disableOrganizeImports = false,
       },
     },
   },
@@ -45,6 +45,24 @@ lspconfig.lua_ls.setup {
       },
     },
   },
+}
+
+lspconfig.emmet_ls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+}
+
+lspconfig.html.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
+}
+
+lspconfig.cssls.setup {
+  on_attach = nvlsp.on_attach,
+  on_init = nvlsp.on_init,
+  capabilities = nvlsp.capabilities,
 }
 
 -- lspconfig.rust_analyzer.setup {
@@ -90,21 +108,6 @@ lspconfig.helm_ls.setup {
     additionalValuesFilesGlobPattern = "values*.yaml",
   },
   filetypes = { "helm" },
-  -- yamlls = {
-  --   enabled = true,
-  --   enabledForFilesGlob = "*.{yaml,yml}",
-  --   diagnosticsLimit = 50,
-  --   showDiagnosticsDirectly = false,
-  --   path = "yaml-language-server",
-  --   config = {
-  --     schemas = {
-  --       kubernetes = "templates/**",
-  --     },
-  --     completion = true,
-  --     hover = true,
-  --     -- any other config from https://github.com/redhat-developer/yaml-language-server#language-server-settings
-  --   }
-  -- }
 }
 
 lspconfig.ts_ls.setup {
@@ -112,10 +115,3 @@ lspconfig.ts_ls.setup {
   on_init = nvlsp.on_init,
   capabilities = nvlsp.capabilities,
 }
-
--- lspconfig.yamlls.setup {
---   on_attach = nvlsp.on_attach,
---   on_init = nvlsp.on_init,
---   capabilities = nvlsp.capabilities,
---   cmd = { 'yaml-language-server', '--stdio' },
--- }
