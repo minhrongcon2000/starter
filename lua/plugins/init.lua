@@ -20,6 +20,12 @@ return {
       return require "configs.nvimtree"
     end,
   },
+  {
+    "stevearc/conform.nvim",
+    opts = function()
+      return require "configs.conform"
+    end,
+  },
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
@@ -51,20 +57,6 @@ return {
         "ruff",
         "emmet-ls",
       },
-    },
-  },
-  {
-    "mfussenegger/nvim-jdtls",
-    lazy = false,
-  },
-  {
-    "nvimtools/none-ls.nvim",
-    opts = function()
-      return require "configs.none_ls"
-    end,
-    lazy = false,
-    dependencies = {
-      "nvimtools/none-ls-extras.nvim",
     },
   },
   {
@@ -129,10 +121,10 @@ return {
       "TmuxNavigatorProcessList",
     },
     keys = {
-      { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
@@ -161,10 +153,10 @@ return {
       require("telescope").setup {
         extensions = {
           fzf = {
-            fuzzy = true,                   -- false will only do exact matching
+            fuzzy = true, -- false will only do exact matching
             override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true,    -- override the file sorter
-            case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+            override_file_sorter = true, -- override the file sorter
+            case_mode = "smart_case", -- or "ignore_case" or "respect_case"
             -- the default case_mode is "smart_case"
           },
         },
