@@ -2,7 +2,7 @@ vim.g.base46_cache = vim.fn.stdpath "data" .. "/base46/"
 vim.g.mapleader = " "
 vim.wo.relativenumber = true
 vim.filetype.add { extension = { ejs = "html" } }
-vim.opt.colorcolumn = "140"
+vim.opt.colorcolumn = "120"
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
@@ -34,8 +34,6 @@ dofile(vim.g.base46_cache .. "statusline")
 
 require "options"
 require "autocmds"
-
-require("nvim-tree").setup { git = { ignore = false } }
 
 vim.schedule(function()
   require "mappings"
