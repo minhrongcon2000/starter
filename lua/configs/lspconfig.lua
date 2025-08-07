@@ -94,6 +94,7 @@ lspconfig.gopls.setup {
       analyses = {
         unusedparams = true,
       },
+      buildFlags = {"-tags=wireinject"}
     },
   },
 }
