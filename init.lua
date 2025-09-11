@@ -13,6 +13,7 @@ if not vim.uv.fs_stat(lazypath) then
 end
 
 vim.opt.rtp:prepend(lazypath)
+vim.opt.rtp:append("/opt/homebrew/opt/fzf")
 vim.o.formatexpr = "v:lua.require'conform'.formatexpr()"
 
 local lazy_config = require "configs.lazy"

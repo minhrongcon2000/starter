@@ -43,7 +43,6 @@ return {
         "html-lsp",
         "css-lsp",
         "prettier",
-        "jdtls",
         "pyright",
         "black",
         "isort",
@@ -161,7 +160,8 @@ return {
           },
         },
       }
+      require("telescope").load_extension("fzf")
     end,
   },
-  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+  { "nvim-telescope/telescope-fzf-native.nvim", dependencies={"nvim-telescope/telescope.nvim"}, build = "make" },
 }
